@@ -1,0 +1,4 @@
+celery[pytest]
+pytest-celery
+pytest
+redis
