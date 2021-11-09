@@ -1,7 +1,7 @@
 import logging
 
 from .events import EventTester, EventTesterTmpFile
-from messagio.decorators import listen_to_message
+from decorators import listen_to_message
 
 logger = logging.getLogger("messagio")
 

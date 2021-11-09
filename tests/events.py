@@ -1,6 +1,6 @@
 import logging
 
-from messagio import Messagio, messagio_dataclass
+from src.messagio import Messagio, messagio_dataclass
 
 logger = logging.getLogger("messagio")
 

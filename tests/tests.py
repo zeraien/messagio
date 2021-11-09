@@ -1,7 +1,7 @@
 import pytest
 import tempfile
 import time
-from messagio.message_center import MessageCenter
+from message_center import MessageCenter
 from .events import (
     EventTesterTmpFile,
     EventTester,
