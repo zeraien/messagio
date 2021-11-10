@@ -29,8 +29,10 @@ try:
             try:
                 app_path = app_config.path
                 for f in _yield_file(app_path):
-                    logger.debug("Importing tasks from %s.%s" % (basename(app_path), f))
-                    importlib.import_module("%s.%s" % (app_name, "tasks"))
+                    logger.debug(
+                        "Importing messagio listeners from %s.%s" % (app_name, f)
+                    )
+                    importlib.import_module("%s.%s" % (app_name, f))
             except AttributeError as e:
                 logger.exception(e)
 
