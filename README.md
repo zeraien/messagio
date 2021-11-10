@@ -45,12 +45,12 @@ Keep in mind that if you are using `json` for pickling, you need to also add
 # Defining Messagios
 
 A messagio is a class that can be pickled, and extends from the `Messagio` class.
-The best way to create messagios is with `dataclasses`, so you can decorate your class with `@messagio` which will turn that class into a dataclass.
-Your messagio class needs to extend `Messagio`, the `@messagio` decorator is optional however.
+The best way to create messagios is with `dataclasses`, so just decorate your class with `@dataclass`.
+Your messagio class needs to extend `Messagio`, the `@dataclass` decorator is optional however.
 
 Here are two ways to define messagios:
 ```python3
-@messagio
+@dataclass
 class PerformAction(Messagio):
    action_name:str
    obj:any
