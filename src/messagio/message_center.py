@@ -15,17 +15,15 @@ class MessageCenter(AbstractMessageCenter):
         self._subs = defaultdict(set)
 
     @classmethod
-    def send(cls, ecs_event, sync=False):
+    def send(cls, messagio, sync=False):
         """
         send a message to all who would listen.
 
-        :param ecs_event: message type as a string or Enum
+        :param messagio: message type as a string or Enum
         :param sync: send message synchronously
         """
-        logger.debug(
-            "[PUB] Publishing message %s: %s" % (ecs_event.get_name(), ecs_event)
-        )
-        cls.singleton().send_message(ecs_event, sync=sync)
+        logger.debug("[PUB] Publishing message %s: %s" % (messagio.get_name(), messagio))
+        cls.singleton().send_message(messagio, sync=sync)
 
     def get_subscribers(self, message_type: Messagio):
         return list(self._subs[message_type.get_name()])

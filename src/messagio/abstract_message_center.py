@@ -20,11 +20,11 @@ class AbstractMessageCenter(ABC):
 
     @classmethod
     @abstractmethod
-    def send(cls, ecs_event: Messagio, sync: bool = False):
+    def send(cls, messagio: Messagio, sync: bool = False):
         """
         send a message to all who would listen.
 
-        :param ecs_event: message type as a string or Enum
+        :param messagio: message type as a string or Enum
         :param sync: send message synchronously
         """
 

@@ -13,7 +13,7 @@ class Messagio:
         """
         from .message_center import MessageCenter
 
-        MessageCenter.send(self, sync=sync)
+        MessageCenter.send(messagio=self, sync=sync)
 
 
 @unique
