@@ -48,6 +48,33 @@ class ActionPerformed(Messagio):
 
 ```
 
+# Autodiscover the messagios and project structure
+
+In order for your decorated messagio listeners to be respected, you must make sure they are imported at runtime.
+
+The simplest way is to use the `autodiscover_listeners` function.
+
+For autodiscovery to work your messagio definitions need to follow a certain structure.
+
+Place your listener functions in any of the below files or folder structures.
+
+```
+- messagio.py
+
+- tasks.py
+
+- messagio
+  - __init__.py
+```
+
+Then use the following code somewhere in your project that is always imported,
+for `Django` projects this can be in the main `urls.py` file.
+
+```python3
+from messagio import autodiscover_listeners
+autodiscover_listeners()
+```
+
 # Publishing messagios
 
 Publishing messagios is simple, just `fire` it.

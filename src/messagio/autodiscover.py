@@ -1,12 +1,12 @@
+import logging
+
+logger = logging.getLogger("messagio")
 try:
     import importlib
-    import logging
     import os
     from os.path import basename
 
     from django.apps import apps
-
-    logger = logging.getLogger("messagio")
 
     def _yield_file(app_path):
         try:
@@ -14,10 +14,10 @@ try:
                 for entry in it:
                     if entry.name == "messagio.py":
                         yield entry.name[:-3]
+                    elif entry.name == "tasks.py":
+                        yield entry.name[:-3]
                     elif entry.name == "messagio":
                         yield entry.name
-                    elif entry.name == "messagio/listeners.py":
-                        yield entry.name[:-3].replace("/", ".")
         except FileNotFoundError:
             pass
 
@@ -36,4 +36,6 @@ try:
 
 
 except ImportError:
-    print("Django is not installed so autodiscover can not be used.")
+    logger.exception(
+        "Django is not installed so autodiscover can not be used.", exc_info=True
+    )

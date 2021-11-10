@@ -1,6 +1,8 @@
 import logging
 from collections import defaultdict
 
+import celery
+
 from .abstract_message_center import AbstractMessageCenter
 from .const import Messagio, TASK_PRIORITY
 

@@ -1,7 +1,10 @@
+import logging
 import typing
 from dataclasses import dataclass
 
 from .const import Messagio, TASK_PRIORITY
+
+logger = logging.getLogger("messagio")
 
 
 def messagio_dataclass(cls=None, /):
@@ -53,7 +56,7 @@ def listen_to_message(
         from .message_center import MessageCenter
 
         for messagio in messagios:
-            print("Registering task %s/%s" % (messagio, func))
+            logger.debug("Registering task %s/%s", messagio, func)
             MessageCenter.singleton().subscribe(
                 event_type=messagio, func=func, **task_args
             )
