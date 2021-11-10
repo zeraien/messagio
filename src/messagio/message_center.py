@@ -77,18 +77,18 @@ class MessageCenter(AbstractMessageCenter):
         for func in subscribers:
             if not sync:
                 message_runner.apply_async(
-                    args=(
-                        func,
-                        event,
+                    kwargs=dict(
+                        func=func,
+                        messagio=event,
                     ),
                     serializer="pickle",
                     **extra_task_settings
                 )
             else:
                 message_runner.apply(
-                    args=(
-                        func,
-                        event,
+                    kwargs=dict(
+                        func=func,
+                        messagio=event,
                     ),
                     serializer="pickle",
                 )

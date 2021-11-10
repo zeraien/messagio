@@ -27,6 +27,20 @@ CELERY_TASK_ROUTES = (
     ],
 )
 ```
+Don't forget to also set up the queues, for example:
+```python3
+CELERY_TASK_QUEUES = (
+    Queue('celery', Exchange('celery'), routing_key='celery'),
+    Queue("messagio", Exchange("messagio"), routing_key="messagio"),
+)
+```
+
+And finally, you need to ensure that `pickle` is supported by your Celery config.
+```python3
+CELERY_ACCEPT_CONTENT = ["pickle"]
+```
+Keep in mind that if you are using `json` for pickling, you need to also add
+`json` to the array above.
 
 # Defining Messagios
 
