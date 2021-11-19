@@ -1,17 +1,18 @@
 import logging
+from dataclasses import dataclass
 
-from src.messagio import Messagio, messagio_dataclass
+from src.messagio import Messagio
 
 logger = logging.getLogger("messagio")
 
 
-@messagio_dataclass
+@dataclass
 class EventTester(Messagio):
     name: str
     value: str
 
 
-@messagio_dataclass
+@dataclass
 class EventTesterTmpFile(Messagio):
     fname: str
     value: str

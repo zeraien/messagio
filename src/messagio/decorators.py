@@ -1,23 +1,9 @@
 import logging
 import typing
-from dataclasses import dataclass
 
 from .const import Messagio, TASK_PRIORITY
 
 logger = logging.getLogger("messagio")
-
-
-def messagio_dataclass(cls=None, /):
-    def wrap(_cls):
-        return dataclass(init=True, eq=True)(_cls)
-
-    # See if we're being called as @dataclass or @dataclass().
-    if cls is None:
-        # We're called with parens.
-        return wrap
-
-    # We're called as @dataclass without parens.
-    return wrap(cls)
 
 
 def listen_to_message(
